@@ -33,7 +33,7 @@ module.exports = (api, opts) => {
     hasTS = fs.existsSync(tsPath)
 
   const dependencies = {
-    quasar: '^1.0.0',
+    '@wqd/quasar': '^1.0.0',
     '@quasar/extras': '^1.0.0'
   }
 
@@ -50,7 +50,7 @@ module.exports = (api, opts) => {
   }
   else if (['sass', 'scss'].includes(opts.quasar.cssPreprocessor)) {
     Object.assign(deps.devDependencies, {
-      'node-sass': '^4.13.0',
+      'dart-sass': '@1',
       'sass-loader': '^8.0.0'
     })
   }
@@ -71,7 +71,7 @@ module.exports = (api, opts) => {
       }
     )
 
-    transpileDependencies.push('quasar')
+    transpileDependencies.push('@wqd/quasar')
 
     return { pluginOptions, transpileDependencies }
   })
@@ -116,20 +116,20 @@ module.exports = (api, opts) => {
       lines += `\nimport './styles/quasar.${opts.quasar.cssPreprocessor}'`
     }
     else {
-      lines += `\nimport 'quasar/dist/quasar.css'`
+      lines += `\nimport '@wqd/quasar/dist/quasar.css'`
     }
 
     if (opts.quasar.features.includes('ie')) {
-      lines += `\nimport 'quasar/dist/quasar.ie.polyfills'`
+      lines += `\nimport '@wqd/quasar/dist/quasar.ie.polyfills'`
     }
 
     if (hasIconSet) {
       const set = iconMap[opts.quasar.iconSet] || opts.quasar.iconSet
-      lines += `\nimport iconSet from 'quasar/icon-set/${set}.js'`
+      lines += `\nimport iconSet from '@wqd/quasar/icon-set/${set}.js'`
     }
 
     if (hasLang) {
-      lines += `\nimport lang from 'quasar/lang/${opts.quasar.lang}.js'`
+      lines += `\nimport lang from '@wqd/quasar/lang/${opts.quasar.lang}.js'`
     }
 
     opts.quasar.features
@@ -140,7 +140,7 @@ module.exports = (api, opts) => {
       })
 
     // build import
-    lines += `\nimport { Quasar } from 'quasar'`
+    lines += `\nimport { Quasar } from '@wqd/quasar'`
 
     // build Vue.use()
     lines += `\n\nVue.use(Quasar, {`

@@ -25,15 +25,15 @@ module.exports = (api, options) => {
       )
       .set(
         'quasar-variables-styl',
-        `quasar/src/css/variables.${srcCssExt}`
+        `@wqd/quasar/src/css/variables.${srcCssExt}`
       )
       .set(
         'quasar-styl',
-        `quasar/dist/quasar.${srcCssExt}`
+        `@wqd/quasar/dist/quasar.${srcCssExt}`
       )
       .set(
         'quasar-addon-styl',
-        `quasar/src/css/flex-addon.${srcCssExt}`
+        `@wqd/quasar/src/css/flex-addon.${srcCssExt}`
       )
 
     chain.performance.maxEntrypointSize(512000)
